@@ -1,23 +1,23 @@
 # ISL-translator
 
 
-# 🧠 ISL Voice-to-Sign Language Translator 🎙️🤟
+#  ISL Voice-to-Sign Language Translator 
 
 A final-year BE project that translates spoken English into Indian Sign Language (ISL) using **Speech Recognition**, **NLP**, and **3D animated sign videos**. This helps bridge the communication gap for the deaf and hard-of-hearing community in India.
 
 ---
 
-## 🛠️ Features
+##  Features
 
-- 🎤 **Speech-to-Text** using Python's `speech_recognition` library.
-- ✏️ **Text Simplification** using basic NLP techniques.
-- 🤖 **Word-to-Sign Mapping** powered by a custom ISL dictionary.
-- 🎞️ **3D ISL Sign Display** using `OpenCV` to show animated sign videos.
-- 🌐 **Web UI** for accessible user interaction.
+-  **Speech-to-Text** using Python's `speech_recognition` library.
+-  **Text Simplification** using basic NLP techniques.
+-  **Word-to-Sign Mapping** powered by a custom ISL dictionary.
+-  **3D ISL Sign Display** using `OpenCV` to show animated sign videos.
+-  **Web UI** for accessible user interaction.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ├── speech_to_text/ # Audio to text conversion
 ├── text_processing/ # Simplification and NLP
@@ -30,7 +30,7 @@ A final-year BE project that translates spoken English into Indian Sign Language
 └── archived_csharp/ # Archived prototype in C#
 
 
-## 🚀 How to Run
+##  How to Run
 
 1. Clone the repo:
    ```bash
@@ -47,11 +47,11 @@ Libraries: speech_recognition, OpenCV, os, json
 
 
 
-📌 Future Improvements
-🔡 Add sentence-to-video generation
-
-🌐 Host the app with Flask/Django
-
-🧠 Integrate deep learning for sign prediction
-
-📲 Build a mobile version
+ Future Improvements
+ 1.Add sentence-to-video generation
+ 
+ 2.Host the app with Flask/Django
+ 
+ 3.Integrate deep learning for sign prediction
+ 
+ 4.Build a mobile version
