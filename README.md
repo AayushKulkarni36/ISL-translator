@@ -3,7 +3,7 @@
 
 #  ISL Voice-to-Sign Language Translator 
 
-A final-year BE project that translates spoken English into Indian Sign Language (ISL) using **Speech Recognition**, **NLP**, and **3D animated sign videos**. This helps bridge the communication gap for the deaf and hard-of-hearing community in India.
+A project that translates spoken English into Indian Sign Language (ISL) using **Speech Recognition**, **NLP**, and **3D animated sign videos**. This helps bridge the communication gap for the deaf and hard-of-hearing community in India.
 
 ---
 
