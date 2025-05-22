@@ -1,0 +1,23 @@
+ISL-Translator/
+├── audio_input/
+│   └── recorded_audio.wav         # Saved voice recordings
+│
+├── models/
+│   ├── text_to_sign_model.pt      # (Optional) ML model for text to sign mapping
+│   └── emotion_model.pt           # (Optional) Emotion detection model
+│
+├── animations/
+│   ├── A.blend                    # Blender file for letter 'A' in ISL
+│   ├── B.blend                    # and so on...
+│   └── hello.glb                  # Ready 3D animation for "hello"
+│
+├── scripts/
+│   ├── main.py                    # Main execution script
+│   ├── voice_to_text.py           # Speech recognition
+│   ├── text_processor.py          # Text simplifier/NLP handler
+│   ├── sign_mapper.py             # Map text to signs
+│   └── animation_player.py        # Play/render ISL animations
+│
+├── requirements.txt               # All your pip dependencies
+├── README.md                      # Project description & setup guide
+└── .gitignore                     # Ignore .pyc, __pycache__, etc.
