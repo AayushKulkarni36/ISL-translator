@@ -19,16 +19,15 @@ def translate():
     video_urls = []
 
     for word in words:
-        # Adjust key casing as per your dictionary keys
-        key = word.capitalize()  
+        key = word.capitalize()  # Assumes keys in isl_dict are capitalized
         if key in isl_dict:
             video_urls.append(isl_dict[key])
 
     if not video_urls:
         return jsonify({"error": "No ISL videos found for input"}), 404
-    
-    # Return the list of video URLs as JSON
-    return jsonify({"video_url": video_urls[0]})  # or video_urls if you want to return all
+
+    # ✅ Return all video URLs
+    return jsonify({"video_urls": video_urls})
 
 if __name__ == "__main__":
     app.run(debug=True)

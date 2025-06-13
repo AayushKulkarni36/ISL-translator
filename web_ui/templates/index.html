@@ -8,7 +8,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-        /* Reset */
         * {
             box-sizing: border-box;
         }
@@ -54,7 +53,7 @@
             border-radius: 30px;
             box-shadow: 0 4px 12px rgba(74, 20, 140, 0.6);
             transition: background 0.3s ease, box-shadow 0.3s ease;
-            margin: 20px 0;
+            margin: 12px 0;
             min-width: 220px;
         }
 
@@ -81,10 +80,6 @@
             transition: border-color 0.25s ease;
             user-select: none;
             height: 90px;
-        }
-
-        select:focus {
-            border-color: #7b1fa2;
         }
 
         label {
@@ -128,7 +123,6 @@
             box-shadow: 0 8px 24px rgba(74, 20, 140, 0.3);
         }
 
-        /* Responsive */
         @media (max-width: 480px) {
             .container {
                 padding: 20px;
@@ -145,19 +139,16 @@
     <div class="container" role="main" aria-label="Indian Sign Language Translator">
         <h1>Indian Sign Language Translator</h1>
 
-        <button id="start-record-btn" aria-live="polite" aria-label="Start voice input">
-            🎤 Start Voice Input
-        </button>
-        <p>Status: <span id="status" class="idle" aria-live="polite">Idle</span></p>
+        <button id="start-record-btn">🎤 Start Voice Input</button>
+        <p>Status: <span id="status" class="idle">Idle</span></p>
 
         <label for="recognized-text">Recognized Text:</label>
-        <select id="recognized-text" size="3" aria-label="Recognized phrases"></select>
+        <select id="recognized-text" size="3"></select>
 
-        <button id="translate-btn" disabled aria-disabled="true" aria-label="Translate and show ISL animation">
-            Translate &amp; Show ISL Animation
-        </button>
+        <button id="speak-btn" disabled>🔊 Speak Recognized Text</button>
+        <button id="translate-btn" disabled>🎬 Translate &amp; Show ISL Animation</button>
 
-        <video id="isl-video" controls aria-label="Indian Sign Language Animation Video"></video>
+        <video id="isl-video" controls></video>
     </div>
 
     <script>
@@ -165,85 +156,81 @@
         const statusSpan = document.getElementById('status');
         const recognizedTextSelect = document.getElementById('recognized-text');
         const translateBtn = document.getElementById('translate-btn');
+        const speakBtn = document.getElementById('speak-btn');
         const videoElem = document.getElementById('isl-video');
 
         let recognition;
-        let lastRecognized = '';
 
         function setStatus(text, type = 'idle') {
             statusSpan.textContent = text;
             statusSpan.className = type;
         }
 
-        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-            alert('Your browser does not support the Web Speech API. Please use Chrome or Edge.');
+        // Check for speech recognition support
+        if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+            alert('Web Speech API not supported. Use Chrome or Edge.');
             setStatus('Browser not supported', 'error');
         } else {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             recognition = new SpeechRecognition();
+            recognition.lang = 'en-IN';
             recognition.continuous = false;
             recognition.interimResults = false;
-            recognition.lang = 'en-IN'; // Indian English accent, change if needed
 
-            recognition.onstart = () => {
-                setStatus('Listening...', 'listening');
-            };
-            recognition.onerror = (event) => {
-                setStatus('Error: ' + event.error, 'error');
-            };
-            recognition.onend = () => {
-                setStatus('Idle', 'idle');
-            };
+            recognition.onstart = () => setStatus('Listening...', 'listening');
+            recognition.onerror = e => setStatus('Error: ' + e.error, 'error');
+            recognition.onend = () => setStatus('Idle', 'idle');
+
             recognition.onresult = (event) => {
                 const transcript = event.results[0][0].transcript.trim();
-                lastRecognized = transcript;
-                // Add to dropdown options if not already present
                 if (![...recognizedTextSelect.options].some(opt => opt.value === transcript)) {
                     const option = document.createElement('option');
                     option.value = transcript;
                     option.textContent = transcript;
                     recognizedTextSelect.appendChild(option);
                 }
-                // Select the latest recognized text
                 recognizedTextSelect.value = transcript;
                 translateBtn.disabled = false;
-                translateBtn.setAttribute('aria-disabled', 'false');
+                speakBtn.disabled = false;
                 setStatus('Voice recognized.', 'success');
             };
         }
 
+        // Start voice input
         startBtn.addEventListener('click', () => {
             recognition.start();
             translateBtn.disabled = true;
-            translateBtn.setAttribute('aria-disabled', 'true');
+            speakBtn.disabled = true;
             setStatus('Idle', 'idle');
         });
 
+        // Text-to-Speech for accessibility
+        speakBtn.addEventListener('click', () => {
+            const text = recognizedTextSelect.value;
+            if (!text) return alert('Please select a sentence first.');
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-IN';
+            speechSynthesis.speak(utterance);
+        });
+
+        // Translate text and play ISL videos
         translateBtn.addEventListener('click', () => {
-            const textToTranslate = recognizedTextSelect.value;
-            if (!textToTranslate) {
-                alert('Please select or speak some text.');
-                return;
-            }
+            const text = recognizedTextSelect.value;
+            if (!text) return alert('Please speak or select some text');
 
             setStatus('Translating...', 'listening');
-
             fetch('/translate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text: textToTranslate })
+                body: JSON.stringify({ text: text })
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.video_url) {
-                        videoElem.src = data.video_url;
-                        videoElem.style.display = 'block';
-                        videoElem.play();
-                        setStatus('Translation complete!', 'success');
-                    } else if (data.error) {
-                        setStatus('No video found for this text.', 'error');
+                    if (data.video_urls && data.video_urls.length > 0) {
+                        playVideosSequentially(data.video_urls);
+                        setStatus('Playing ISL translation...', 'success');
                     } else {
-                        setStatus('No video returned.', 'error');
+                        setStatus('No video found for this text.', 'error');
                     }
                 })
                 .catch(err => {
@@ -251,6 +238,26 @@
                     console.error(err);
                 });
         });
+
+        // Play ISL videos one after another
+        function playVideosSequentially(urls) {
+            let index = 0;
+            if (urls.length === 0) return;
+
+            videoElem.style.display = 'block';
+            videoElem.src = urls[index];
+            videoElem.play();
+
+            videoElem.onended = () => {
+                index++;
+                if (index < urls.length) {
+                    videoElem.src = urls[index];
+                    videoElem.play();
+                } else {
+                    setStatus('All signs played.', 'success');
+                }
+            };
+        }
     </script>
 </body>
 
