@@ -81,13 +81,17 @@ npm start
 ![image](https://github.com/user-attachments/assets/64d39942-c079-4452-9b58-e32df87fda98)
 
 
+
+
 ### LICENSE
 MIT License. Free to use and contribute!
 
 
 🙋‍♂️ Author
 Ayush Kulkarni
+
 Final Year IT Engineering Student
+
 Connect(Linkedin): https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3B2dMBiY8EQuOgZxSPCJ3t3w%3D%3D
 
 
