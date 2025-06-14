@@ -69,7 +69,7 @@ npm start
 6.Video Display: Corresponding sign language videos are played sequentially.
 
 
-##Use Cases
+## Use Cases
 -Education tools for deaf students
 
 -Real-time communication assist
@@ -77,11 +77,11 @@ npm start
 -Integration into classrooms or public services
 
 
-#Screenshot:
+# Screenshot:
 ![image](https://github.com/user-attachments/assets/64d39942-c079-4452-9b58-e32df87fda98)
 
 
-###LICENSE
+### LICENSE
 MIT License. Free to use and contribute!
 
 
