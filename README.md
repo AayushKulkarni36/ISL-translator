@@ -1,57 +1,95 @@
-# ISL-translator
+# ISL Voice-to-Sign Language Translator
 
-
-#  ISL Voice-to-Sign Language Translator 
-
-A project that translates spoken English into Indian Sign Language (ISL) using **Speech Recognition**, **NLP**, and **3D animated sign videos**. This helps bridge the communication gap for the deaf and hard-of-hearing community in India.
+This project is a **Voice-to-Indian Sign Language (ISL) Translator** that converts spoken input into corresponding sign language video animations. It is designed to aid communication for the deaf and hard-of-hearing community.
 
 ---
 
-##  Features
+## 🔧 Features
 
--  **Speech-to-Text** using Python's `speech_recognition` library.
--  **Text Simplification** using basic NLP techniques.
--  **Word-to-Sign Mapping** powered by a custom ISL dictionary.
--  **3D ISL Sign Display** using `OpenCV` to show animated sign videos.
--  **Web UI** for accessible user interaction.
+- 🎤 Speech to Text using Web Speech API
+- 🧠 Text simplification and processing
+- 📘 Word-to-Sign Mapping using ISL dictionary
+- 🎬 Sign animation playback using smooth UI
+- 🌐 React frontend + Flask backend
+- 🌙 Light/Dark mode UI toggle
+- 🌍 Multi-language input support (via Google Translate)
 
 ---
 
-##  Project Structure
+## 🧭 Project Structure
 
-├── speech_to_text/ # Audio to text conversion
-├── text_processing/ # Simplification and NLP
-├── text_to_isl/ # Mapping text to sign videos
-├── web_ui/ # Web interface (HTML/CSS/JS)
-├── isl_dict.json # Dictionary of word-to-sign mappings
-├── main.py # Project entry point
-├── Roadmap.txt # Project goals and timeline
-├── README.md # This file
-└── archived_csharp/ # Archived prototype in C#
-
-
-##  How to Run
-
-1. Clone the repo:
-   ```bash
-    git clone https://github.com/AayushKulkarni36/ISL-translator.git
-   cd ISL-translator
-   
-2.Install dependencies:  pip install -r requirements.txt
-   
-3.Run the app: python main.py
-
-🔧 Tech Stack
-Languages: Python, HTML, CSS, JavaScript
-Libraries: speech_recognition, OpenCV, os, json
+SL-translator/
+├── app.py # Flask backend
+├── isl_dict.json # ISL word-to-video mapping
+├── static/ # Sign language videos
+├── web_ui/
+│ └── translator/translate.py # Word/video translator logic
+├── isl-frontend/
+│ ├── public/
+│ └── src/
+│ ├── App.js # Main React UI
+│ └── App.css # Custom styling and animations
+└── README.md
 
 
+## 🚀 How to Run
 
- Future Improvements
- 1.Add sentence-to-video generation
- 
- 2.Host the app with Flask/Django
- 
- 3.Integrate deep learning for sign prediction
- 
- 4.Build a mobile version
+### Prerequisites
+
+- Python 3.x
+- Flask(backend)
+- NLP
+- React,Node.js (for frontend)
+- Git
+
+### Backend Setup
+```bash
+cd ISL-translator
+pip install -r requirements.txt
+python app.py
+
+### Frontend Setup
+cd isl-frontend
+npm install
+npm start
+```
+
+
+# How It Works
+1.Voice Input: The user speaks using the microphone.
+
+2.Speech Recognition: Captured using Web Speech API.
+
+3.Language Detection & Translation: If input is not English, it's translated using Google Translate.
+
+4.Text Processing: Simplified text is split into words.
+
+5.Mapping: Each word is checked in isl_dict.json.
+
+6.Video Display: Corresponding sign language videos are played sequentially.
+
+
+##Use Cases
+-Education tools for deaf students
+
+-Real-time communication assist
+
+-Integration into classrooms or public services
+
+
+#Screenshot:
+![image](https://github.com/user-attachments/assets/64d39942-c079-4452-9b58-e32df87fda98)
+
+
+###LICENSE
+MIT License. Free to use and contribute!
+
+
+🙋‍♂️ Author
+Ayush Kulkarni
+Final Year IT Engineering Student
+Connect(Linkedin): https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3B2dMBiY8EQuOgZxSPCJ3t3w%3D%3D
+
+
+
+
