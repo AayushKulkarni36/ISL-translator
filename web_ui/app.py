@@ -1,15 +1,36 @@
 from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
+from googletrans import Translator
 import json
 import os
 
 app = Flask(__name__, static_folder="static")
 CORS(app)
 
-# Load ISL dictionary with lowercase keys and fixed slashes
+# Load ISL dictionary
 with open("isl_dict.json", "r") as f:
     raw_dict = json.load(f)
     isl_dict = {k.lower(): v.replace("\\", "/") for k, v in raw_dict.items()}
+
+translator = Translator()
+
+def detect_language(text):
+    try:
+        detection = translator.detect(text)
+        print(f"Detected language: {detection.lang}")
+        return detection.lang
+    except Exception as e:
+        print("Language detection error:", e)
+        return "en"
+
+def translate_to_english(text, source_lang):
+    try:
+        translated = translator.translate(text, src=source_lang, dest='en')
+        print(f"Translated '{text}' from {source_lang} to English: {translated.text}")
+        return translated.text
+    except Exception as e:
+        print("Translation error:", e)
+        return text
 
 @app.route("/translate", methods=["POST"])
 def translate():
@@ -19,32 +40,40 @@ def translate():
             return jsonify({"error": "Invalid input"}), 400
 
         input_text = data["text"].strip()
-        words = input_text.lower().split()
+
+        # Step 1: Detect language
+        detected_lang = detect_language(input_text)
+
+        # Step 2: Translate to English for ISL mapping
+        if detected_lang != "en":
+            translated_text = translate_to_english(input_text, detected_lang)
+        else:
+            translated_text = input_text
+
+        # Step 3: Extract video paths from translated text
+        words = translated_text.lower().split()
         video_paths = []
 
-        print(f"\n Received text: '{input_text}'")
-        print(" Words to check:", words)
-        print(" Dictionary keys:", list(isl_dict.keys()))
-
+        print(f"\nWords to check: {words}")
         for word in words:
             if word in isl_dict:
-                video_rel_path = isl_dict[word]  # e.g., ISL_Vid/hello.mp4
+                video_rel_path = isl_dict[word]
                 full_path = os.path.join(app.static_folder, video_rel_path)
-                print(f"\n Checking word: '{word}'")
-                print(f" Found in dictionary. Path: {full_path}")
-
                 if os.path.exists(full_path):
                     video_paths.append(f"/static/{video_rel_path}")
                 else:
-                    print(f" File NOT FOUND on disk: {full_path}")
+                    print(f"File not found: {full_path}")
             else:
-                print(f" Word not found in dictionary: '{word}'")
+                print(f"Word not found in dictionary: '{word}'")
 
-        print("\n🎬 Final video list to return:", video_paths)
-        return jsonify({"videos": video_paths})
+        return jsonify({
+            "videos": video_paths,
+            "display_lang": detected_lang,
+            "original_text": input_text
+        })
 
     except Exception as e:
-        print(" Exception in /translate:", e)
+        print("Exception in /translate:", e)
         return jsonify({"error": "Error during translation"}), 500
 
 @app.route('/static/<path:filename>')

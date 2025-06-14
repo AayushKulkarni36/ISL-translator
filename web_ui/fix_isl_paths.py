@@ -17,4 +17,4 @@ for key, path in data.items():
 with open("isl_dict.json", "w") as f:
     json.dump(fixed_data, f, indent=4)
 
-print("✅ isl_dict.json paths cleaned successfully!")
+print(" isl_dict.json paths cleaned successfully!")
