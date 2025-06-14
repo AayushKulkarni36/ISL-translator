@@ -22,29 +22,29 @@ def translate():
         words = input_text.lower().split()
         video_paths = []
 
-        print(f"\n📥 Received text: '{input_text}'")
-        print("🔎 Words to check:", words)
-        print("📖 Dictionary keys:", list(isl_dict.keys()))
+        print(f"\n Received text: '{input_text}'")
+        print(" Words to check:", words)
+        print(" Dictionary keys:", list(isl_dict.keys()))
 
         for word in words:
             if word in isl_dict:
                 video_rel_path = isl_dict[word]  # e.g., ISL_Vid/hello.mp4
                 full_path = os.path.join(app.static_folder, video_rel_path)
-                print(f"\n➡️ Checking word: '{word}'")
-                print(f"✅ Found in dictionary. Path: {full_path}")
+                print(f"\n Checking word: '{word}'")
+                print(f" Found in dictionary. Path: {full_path}")
 
                 if os.path.exists(full_path):
                     video_paths.append(f"/static/{video_rel_path}")
                 else:
-                    print(f"⚠️ File NOT FOUND on disk: {full_path}")
+                    print(f" File NOT FOUND on disk: {full_path}")
             else:
-                print(f"❌ Word not found in dictionary: '{word}'")
+                print(f" Word not found in dictionary: '{word}'")
 
         print("\n🎬 Final video list to return:", video_paths)
         return jsonify({"videos": video_paths})
 
     except Exception as e:
-        print("🚨 Exception in /translate:", e)
+        print(" Exception in /translate:", e)
         return jsonify({"error": "Error during translation"}), 500
 
 @app.route('/static/<path:filename>')
