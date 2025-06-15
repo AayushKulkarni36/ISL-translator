@@ -2,6 +2,11 @@
 
 This project is a **Voice-to-Indian Sign Language (ISL) Translator** that converts spoken input into corresponding sign language video animations. It is designed to aid communication for the deaf and hard-of-hearing community.
 
+## 🚀 Live Demo
+
+👉 [**Try the Live Demo**](https://AayushKulkarni36.github.io/ISL-translator/)
+
+
 ---
 
 ## 🔧 Features
@@ -83,11 +88,14 @@ npm start
 
 
 
-### LICENSE
+
+## LICENSE
+
 MIT License. Free to use and contribute!
 
 
 🙋‍♂️ Author
+
 Ayush Kulkarni
 
 Final Year IT Engineering Student
