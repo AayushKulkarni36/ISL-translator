@@ -7,4 +7,4 @@ def translate_to_english(text, src_lang):
         return translated.text
     except Exception as e:
         print("Translation error:", e)
-        return text  # fallback to original
+        return text  

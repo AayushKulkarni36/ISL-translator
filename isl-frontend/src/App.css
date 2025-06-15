@@ -40,7 +40,7 @@ body.dark {
   gap: 24px;
 }
 
-/* HEADER & FOOTER STYLES */
+
 header,
 footer {
   text-align: center;
@@ -73,7 +73,7 @@ body.dark .card {
   color: #f1f1f1;
 }
 
-/* HEADINGS */
+
 h1 {
   font-size: 90px;
   font-weight: 800;
@@ -88,7 +88,7 @@ label {
   color: var(--primary);
 }
 
-/* INPUTS & SELECT */
+
 input,
 select {
   width: 100%;
@@ -110,7 +110,7 @@ body.dark select {
   border: 1px solid #555;
 }
 
-/* BUTTON */
+
 button {
   width: 100%;
   margin-top: 16px;
@@ -133,7 +133,7 @@ body.dark button {
   background-color: var(--accent);
 }
 
-/* STATUS STYLES */
+
 #status {
   display: block;
   margin-top: 10px;
@@ -153,7 +153,7 @@ body.dark button {
   color: #1976d2;
 }
 
-/* VIDEO + ANIMATION */
+
 video {
   width: 100%;
   border-radius: 12px;
@@ -173,7 +173,7 @@ video.showing {
   opacity: 1;
 }
 
-/* LOADER */
+
 .loader {
   border: 6px solid #f3f3f3;
   border-top: 6px solid var(--primary);
@@ -190,7 +190,7 @@ video.showing {
   }
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 480px) {
   .container {
     padding: 16px;

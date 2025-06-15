@@ -1,4 +1,4 @@
-# Dummy sign dictionary (you will expand this later)
+
 isl_dict = {
     "go": "sign_videos/go.mp4",
     "market": "sign_videos/market.mp4",

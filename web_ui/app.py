@@ -7,7 +7,7 @@ import os
 app = Flask(__name__, static_folder="static")
 CORS(app)
 
-# Load ISL dictionary
+
 with open("isl_dict.json", "r") as f:
     raw_dict = json.load(f)
     isl_dict = {k.lower(): v.replace("\\", "/") for k, v in raw_dict.items()}
@@ -41,16 +41,16 @@ def translate():
 
         input_text = data["text"].strip()
 
-        # Step 1: Detect language
+
         detected_lang = detect_language(input_text)
 
-        # Step 2: Translate to English for ISL mapping
+ 
         if detected_lang != "en":
             translated_text = translate_to_english(input_text, detected_lang)
         else:
             translated_text = input_text
 
-        # Step 3: Extract video paths from translated text
+ 
         words = translated_text.lower().split()
         video_paths = []
 
