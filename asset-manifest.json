@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ISL-translator/static/css/main.e3daed51.css",
+    "main.js": "/ISL-translator/static/js/main.6d64df76.js",
+    "static/js/453.004ad34e.chunk.js": "/ISL-translator/static/js/453.004ad34e.chunk.js",
+    "index.html": "/ISL-translator/index.html",
+    "main.e3daed51.css.map": "/ISL-translator/static/css/main.e3daed51.css.map",
+    "main.6d64df76.js.map": "/ISL-translator/static/js/main.6d64df76.js.map",
+    "453.004ad34e.chunk.js.map": "/ISL-translator/static/js/453.004ad34e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e3daed51.css",
+    "static/js/main.6d64df76.js"
+  ]
+}
