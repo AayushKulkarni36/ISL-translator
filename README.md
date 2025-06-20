@@ -11,13 +11,13 @@ This project is a **Voice-to-Indian Sign Language (ISL) Translator** that conver
 
 ## 🔧 Features
 
-- 🎤 Speech to Text using Web Speech API
-- 🧠 Text simplification and processing
-- 📘 Word-to-Sign Mapping using ISL dictionary
-- 🎬 Sign animation playback using smooth UI
-- 🌐 React frontend + Flask backend
-- 🌙 Light/Dark mode UI toggle
-- 🌍 Multi-language input support (via Google Translate)
+-  Speech to Text using Web Speech API
+-  Text simplification and processing
+-  Word-to-Sign Mapping using ISL dictionary
+-  Sign animation playback using smooth UI
+-  React frontend + Flask backend
+-  Light/Dark mode UI toggle
+-  Multi-language input support (via Google Translate)
 
 ---
 
