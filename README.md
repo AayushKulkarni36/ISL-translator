@@ -23,18 +23,7 @@ This project is a **Voice-to-Indian Sign Language (ISL) Translator** that conver
 
 ## 🧭 Project Structure
 
-SL-translator/
-├── app.py # Flask backend
-├── isl_dict.json # ISL word-to-video mapping
-├── static/ # Sign language videos
-├── web_ui/
-│ └── translator/translate.py # Word/video translator logic
-├── isl-frontend/
-│ ├── public/
-│ └── src/
-│ ├── App.js # Main React UI
-│ └── App.css # Custom styling and animations
-└── README.md
+<pre lang="markdown"> ``` ISL-translator/ ├── app.py # Flask backend ├── isl_dict.json # ISL word-to-video mapping ├── static/ # Sign language videos ├── web_ui/ │ └── translator/ │ └── translate.py # Word/video translator logic ├── isl-frontend/ │ ├── public/ │ └── src/ │ ├── App.js # Main React UI │ └── App.css # Custom styling and animations └── README.md ``` </pre>
 
 
 ## 🚀 How to Run
@@ -85,9 +74,6 @@ npm start
 # Screenshot:
 ![image](https://github.com/user-attachments/assets/64d39942-c079-4452-9b58-e32df87fda98)
 ![Screenshot 2025-06-14 202930](https://github.com/user-attachments/assets/0adf825e-4b9f-4092-a97b-c3d579324ff9)
-
-
-
 
 
 
