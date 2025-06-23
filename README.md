@@ -81,7 +81,7 @@ npm start
 
 # LICENSE
 
-MIT License. Free to use and contribute!
+This project is licensed under the [MIT License](LICENSE).
 
 
 # 🙋‍♂️ Author:
