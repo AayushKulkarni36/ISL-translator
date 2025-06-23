@@ -1,23 +1,79 @@
-ISL-Translator/
-├── audio_input/
-│   └── recorded_audio.wav         # Saved voice recordings
-│
-├── models/
-│   ├── text_to_sign_model.pt      # (Optional) ML model for text to sign mapping
-│   └── emotion_model.pt           # (Optional) Emotion detection model
-│
-├── animations/
-│   ├── A.blend                    # Blender file for letter 'A' in ISL
-│   ├── B.blend                    # and so on...
-│   └── hello.glb                  # Ready 3D animation for "hello"
-│
-├── scripts/
-│   ├── main.py                    # Main execution script
-│   ├── voice_to_text.py           # Speech recognition
-│   ├── text_processor.py          # Text simplifier/NLP handler
-│   ├── sign_mapper.py             # Map text to signs
-│   └── animation_player.py        # Play/render ISL animations
-│
-├── requirements.txt               # All your pip dependencies
-├── README.md                      # Project description & setup guide
-└── .gitignore                     # Ignore .pyc, __pycache__, etc.
+ISL-Translator Project Roadmap
+==============================
+
+🎯 Goal:
+Develop a web-based Voice-to-Sign Language Translator that captures voice input, converts it to text, maps it to Indian Sign Language (ISL) signs, and plays the corresponding MP4 videos sequentially.
+
+-----------------------------------------------------
+ PROJECT STRUCTURE
+-----------------------------------------------------
+
+ISL-translator/
+├── app.py                         # Flask backend API
+├── isl_dict.json                  # JSON dictionary mapping words to ISL MP4 video files
+├── static/                        # Contains ISL sign language video files (.mp4)
+├── web_ui/
+│   └── translator/
+│       └── translate.py           # Python logic for mapping text to video filenames
+├── isl-frontend/
+│   ├── public/                    # Public assets (HTML, icons, etc.)
+│   └── src/
+│       ├── App.js                 # Main React component for UI and logic
+│       └── App.css                # Styling and animation for the frontend
+└── README.md                      # Project overview, setup, and instructions
+
+-----------------------------------------------------
+🚀 DEVELOPMENT PHASES
+-----------------------------------------------------
+
+  Phase 1: Voice Capture & Conversion
+   - [x] Capture voice using Web Speech API (on frontend)
+   - [x] Convert speech to text (browser-based)
+
+ Phase 2: Backend Video Mapping
+   - [x] Send recognized text to Flask backend
+   - [x] Process text using simple NLP (lowercase, clean)
+   - [x] Map words to filenames using `isl_dict.json`
+
+ Phase 3: ISL Video Playback
+   - [x] Return list of video URLs to frontend
+   - [x] Play mapped MP4 videos in sequence (React + video element)
+   - [x] Add delay/transition between signs for clarity
+
+ Phase 4: Web UI Integration
+   - [x] Build responsive UI with `App.js`
+   - [x] Add visual feedback for speech input and video output
+   - [ ] Improve mobile usability and accessibility
+
+-----------------------------------------------------
+🔮 FUTURE IMPROVEMENTS
+-----------------------------------------------------
+
+- Add support for sentence-level gestures and expressions
+- Handle unknown words gracefully (fallback animation/message)
+- Optimize backend for performance and scaling
+- Integrate multilingual input (via translation APIs)
+- Enable upload of custom ISL video sets by users/admins
+- Add subtitle support for videos (word highlighting)
+
+-----------------------------------------------------
+📦 DEPENDENCIES
+-----------------------------------------------------
+
+Backend:
+- Flask
+- Python (json, os)
+- `isl_dict.json` file for word mapping
+
+Frontend:
+- React
+- Web Speech API (for voice input)
+- HTML5 `<video>` tag for playback
+
+-----------------------------------------------------
+👨‍💻 CONTRIBUTION & LICENSE
+-----------------------------------------------------
+
+- Modular, clean, and readable codebase
+- Frontend-backend separation for scalability
+- Licensed under the MIT License
