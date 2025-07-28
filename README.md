@@ -2,9 +2,9 @@
 
 This project is a **Voice-to-Indian Sign Language (ISL) Translator** that converts spoken input into corresponding sign language video animations. It is designed to aid communication for the deaf and hard-of-hearing community.
 
-## 🚀 Live Demo
+##  Live Demo
 
-👉 [**Try the Live Demo**](https://AayushKulkarni36.github.io/ISL-translator/)
+ [**Try the Live Demo**](https://AayushKulkarni36.github.io/ISL-translator/)
 
 
 ---
@@ -21,12 +21,12 @@ This project is a **Voice-to-Indian Sign Language (ISL) Translator** that conver
 
 ---
 
-## 🧭 Project Structure
+##  Project Structure
 '''
 <pre lang="markdown"> ``` ISL-translator/ ├── app.py # Flask backend ├── isl_dict.json # ISL word-to-video mapping ├── static/ # Sign language videos ├── web_ui/ │ └── translator/ │ └── translate.py # Word/video translator logic ├── isl-frontend/ │ ├── public/ │ └── src/ │ ├── App.js # Main React UI │ └── App.css # Custom styling and animations └── README.md ``` </pre>
 '''
 
-## 🚀 How to Run
+##  How to Run
 
 ### Prerequisites
 
@@ -84,7 +84,7 @@ npm start
 This project is licensed under the [MIT License](LICENSE).
 
 
-# 🙋‍♂️ Author:
+#  Author:
 
 Aayush Kulkarni
 
