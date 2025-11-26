@@ -6,7 +6,7 @@ This project is a **Voice-to-Indian Sign Language (ISL) Translator** that conver
 
  [**Try the Live Demo**](https://AayushKulkarni36.github.io/ISL-translator/)
 
-## Working Video : https://drive.google.com/file/d/1iZW0JV3s3kUibv3xzKYc3OW_Rv4iXpAI/view?usp=sharing
+
 
 
 ---
@@ -76,6 +76,8 @@ npm start
 # Screenshot:
 ![image](https://github.com/user-attachments/assets/64d39942-c079-4452-9b58-e32df87fda98)
 ![Screenshot 2025-06-14 202930](https://github.com/user-attachments/assets/0adf825e-4b9f-4092-a97b-c3d579324ff9)
+
+## Working Video: https://drive.google.com/file/d/1iZW0JV3s3kUibv3xzKYc3OW_Rv4iXpAI/view?usp=sharing
 
 
 
